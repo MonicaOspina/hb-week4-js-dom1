@@ -46,13 +46,14 @@
         align-content: center;
         position:relative;
         transition: opacity .1;
-        cursor: pointer;
+        
 
         &-left{
             top:0;
             left:0;
             position:absolute;
             width: 50px;
+            cursor: pointer;
         }
 
         &-right{
@@ -60,6 +61,7 @@
             right:0;
             width: 50px;
             position: absolute;
+            cursor: pointer;
         }
         &--disabled{
 			pointer-events: none;
@@ -68,32 +70,30 @@
 		}
     }
 
-    &__dots{
-        display:flex;
-        
-        &-container{
+    &__dot {
+        font-size: 0;
+        &s {
             z-index: 1;
-            height:40px;
-            width:100% ;
             position: absolute;
             display: flex;
             justify-content: center;
-            bottom: 30px;   
-        }   
-    }
+            bottom: 30px;
+        }
+        &-button{
+            margin: 0 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            background-color: white;
+            // margin-left: 10px;
+            //list-style-type: none; 
+            transition:background-color .3s;
+            cursor: pointer; 
+    
+            &--selected{
+                background-color: transparent;
+            }     
+        }
 
-    &__dot-button{
-        height: 20px;
-        width: 20px;
-        border-radius: 10px;
-        background-color: white;
-        margin-left: 10px;
-        //list-style-type: none; 
-        transition:background-color .3s;
-        cursor: pointer; 
-
-        &--selected{
-            background-color: green;
-        }     
     }
 }

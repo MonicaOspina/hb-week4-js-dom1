@@ -1,58 +1,41 @@
-var pos = 0;
+var position = 0
+var images = document.querySelectorAll('.gallery__images-item') // toma todos los elementos
+images[position].classList.add('gallery__images-item--selected')
+var rightBtn = document.querySelector('.gallery__control-right')
+rightBtn.addEventListener('click', next)
+var leftBtn = document.querySelector('.gallery__control-left')
+leftBtn.addEventListener('click', back)
+disabledBtn()
+var dots = document.querySelectorAll('.gallery__dot-button')
+dots[position].classList.add('gallery__dot-button--selected')
 
-var image = document.querySelectorAll('.gallery__images-item') // toma todos los elementos
-var rightbtn = document.querySelector('.gallery__control-right')
-rightbtn.addEventListener("click",next)
-var leftbtn = document.querySelector('.gallery__control-left')
-leftbtn.addEventListener("click",back)
-var dots = document.querySelectorAll('.gallery__dots-button') 
-//dots.addEventListener("click",next)
+// dots.addEventListener("click",next)
 
-
-function next(){
-    if (pos >=0 && pos < image.length-1) {
-            if (pos === 0){
-                leftbtn.classList.add('gallery__control--disabled')
-            }
-            if (pos === image.length-1){
-                rightbtn.classList.add('gallery__control--disabled')
-            }
-        image[pos].classList.remove('gallery__images-item--selected')
-        pos = pos+1
-        leftbtn.classList.remove('gallery__control--disabled')
-        image[pos].classList.add('gallery__images-item--selected')
-        console.log(image[pos])
-    }
+function next () {
+  if (position >= 0 && position < images.length - 1) {
+    images[position].classList.remove('gallery__images-item--selected')
+    position = position + 1
+    leftBtn.classList.remove('gallery__control--disabled')
+    images[position].classList.add('gallery__images-item--selected')
+    disabledBtn()
+  }
 }
 
-function back(){
-    if (pos > 0 && pos <= image.length-1) {
-        /*function disabledbtn(){
-            if (pos == 0){
-                leftbtn.classList.add('gallery__control-left--disabled')
-            }
-            else{
-                leftbtn.classList.remove('gallery__control-left--disabled')
-            }
-            if (pos == image.length-1){
-                rightbtn.classList.add('gallery__control-right--disabled')
-            }
-            else{
-                rigthbtn.classList.remove('gallery__control-rigth--disabled')
-            }
-            console.log(pos)
-        }*/
-        image[pos].classList.remove('gallery__images-item--selected')
-        pos = pos-1
-        image[pos].classList.add('gallery__images-item--selected')
-        console.log(image[pos])
-    }
+function back () {
+  if (position > 0 && position <= images.length - 1) {
+    images[position].classList.remove('gallery__images-item--selected')
+    position = position - 1
+    images[position].classList.add('gallery__images-item--selected')
+    disabledBtn()
+  }
 }
-/*function disabledbtn(){
-    if (pos === 0){
-        leftbtn.classList.add('gallery__control-left--disabled')
-    }
-    if (pos === image.length-1){
-        rigthbtn.classList.add('gallery__control-rigth--disabled')
-    }
-}*/
+function disabledBtn () {
+  if (position === 0) {
+    leftBtn.classList.add('gallery__control--disabled')
+  } else if (position === images.length - 1) {
+    rightBtn.classList.add('gallery__control--disabled')
+  } else {
+    leftBtn.classList.remove('gallery__control--disabled')
+    rightBtn.classList.remove('gallery__control--disabled')
+  }
+}
