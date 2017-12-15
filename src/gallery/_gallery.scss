@@ -45,7 +45,7 @@
         justify-content: center;
         align-content: center;
         position:relative;
-        transition: opacity .1s, background-color .1s;
+        transition: opacity .1;
         cursor: pointer;
 
         &-left{
@@ -64,7 +64,7 @@
         &--disabled{
 			pointer-events: none;
 			opacity: 0.5;
-			background-color: gray;
+			background-color: transparent;
 		}
     }
 
